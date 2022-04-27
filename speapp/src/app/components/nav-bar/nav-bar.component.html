@@ -1,0 +1,42 @@
+
+<nav class="navbar background h-nav-resp">
+  <ul class="nav-list v-class-resp">
+    <div class="logo" routerLink="/"><img src="assets/logo/logo.png" alt="logo"></div>
+    <li  *ngIf="isLoggedIn" >
+      <a routerLink="/dashboard" >Dashboard</a>
+    </li>
+
+    <li  *ngIf="isLoggedIn" >
+      <a  routerLink="/store" >Store</a>
+    </li>
+    <li class="nav-item" *ngIf="!isLoggedIn">
+      <a routerLink="/login">Login</a>
+    </li>
+
+    <li  *ngIf="isLoggedIn">
+      <a  (click)="openEndorseDialog()">Endorse</a>
+    </li>
+    <li  *ngIf="isLoggedIn">
+      <a  (click)="openQuestionDialog()">Question</a>
+    </li>
+    <li  *ngIf="isLoggedIn">
+      <a  (click)="logout()">Logout</a>
+    </li>
+    <li style="margin-left: 20%" *ngIf="isLoggedIn">
+      <a  >Hi {{fullName}}</a>
+    </li>
+    <li  style="float: right ;" *ngIf="isLoggedIn">
+      <i style ="color: gold ; margin: 5px;" class="fas fa-solid fa-coins"></i>
+      <a  style="color:gold;">{{coins}}</a>
+    </li>
+    <li  style="float: right ;" *ngIf="isLoggedIn">
+      <mat-icon style ="color: white ; margin: 5px;" matBadge="15" matBadgeColor="warn" >notifications_none</mat-icon>
+    </li>
+  </ul>
+
+  <div class="burger">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</nav>

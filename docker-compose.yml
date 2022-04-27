@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  database:
+    image: mysql
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: ashu
+      MYSQL_DATABASE: Reap
+      MYSQL_USER: ashu
+      MYSQL_PASSWORD: ashu
+    restart: always
+    ports:
+      - 3307:3306
+    volumes:
+      - dockerAngularSpringDatabaseData:/var/lib/mysql
+    networks:
+      - backendNetwork
+
+  spring-boot-ems:
+    depends_on:
+      - database
+    restart: on-failure
+    build:
+      context: ./Reap
+      dockerfile: Dockerfile
+    container_name: spring-boot-ems
+    ports:
+      - 5050:5050
+    networks:
+      - backendNetwork
+      - frontendNetwork
+
+  angular:
+    build:
+      context: ./speapp
+      dockerfile: Dockerfile
+    container_name: angular
+    ports:
+      - 4200:80
+    depends_on:
+      - spring-boot-ems
+    networks:
+      - frontendNetwork
+
+
+volumes:
+  dockerAngularSpringDatabaseData:
+
+networks:
+  backendNetwork:
+  frontendNetwork:

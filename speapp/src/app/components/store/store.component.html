@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+<body>
+<div class="container">
+  <div class="card-1 card-div" *ngFor="let item of items">
+    <div class="like-icon-div">
+      <label  class="like-icon-div-child">
+        <input type="checkbox" id="card-1-like">
+        <i class="far fa-heart heart-empty"></i>
+        <i class="fas fa-heart heart-fill"></i>
+      </label>
+    </div>
+
+    <div class="gow-img-div img-div">
+      <img src="{{item.imageUrl}}" alt="{{item.name}}">
+    </div>
+    <div class="text-container">
+      <div class="pricing-and-cart">
+        <div class="pricing blink">
+          <i class="fas fa-solid fa-coins"></i>
+          <p class="current-price">{{item.coins}}</p>
+        </div>
+      </div>
+      <p class="date"> Departure date: Immediately </p>
+      <h2 style ="font-family: Garamond; font-size: 24px; color: darkgoldenrod; margin: 20px;"class="item-name">{{item.name}}</h2>
+    <div style="align-content: center;">
+      <button   style="padding: 10px; margin: 6px ;color:white; font-size: 16px ; " class="mat-raised-button mat-primary" (click)="buy(item)">Buy</button>
+    </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
