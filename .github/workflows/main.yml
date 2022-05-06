@@ -26,6 +26,6 @@ jobs:
       uses:  docker/build-push-action@v2.10.0
       with:
         context: ./Reap
-        file: ./Dockerfile
+        file: Dockerfile
         push: true
         tags: ashishsinghal780/reap-backend:latest
